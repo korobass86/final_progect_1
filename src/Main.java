@@ -5,5 +5,7 @@ public class Main {
                 "4 - decrypt file with key\n" +
                 "3 - brute force decrypt file\n" +
                 "2 - statistic analize descriptor");
+
+        System.out.println("ljdvfvebebe");
     }
 }

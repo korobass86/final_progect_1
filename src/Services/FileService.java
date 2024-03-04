@@ -13,7 +13,7 @@ public class FileService {
         this.filesPath = filesPath;
     }
 
-    public List<String> fileRead (PathService filesPath) {
+    public List<String> fileRead () {
 
         try {
             List<String> readBuffer = Files.readAllLines(filesPath.getFileToRead());
@@ -23,13 +23,16 @@ public class FileService {
         }
     }
 
-    public void fileWrite (PathService filesPath, List<String> dataToWrite){
+    public void fileWrite (List<String> dataToWrite){
         try{
             if (filesPath.isReadable()){
                 Files.write(filesPath.getFileToWrite(), dataToWrite);
+            } else {
+                System.out.println("Файл по указанному пути не удалось найти.");
             }
         } catch (IOException e){
-
+            throw new FileAccessException(e.getMessage(), e.getCause());
         }
     }
+
 }

@@ -16,8 +16,8 @@ public class CryptoAnalizer {
 
     public void encryptFile () {
         List<String> dataToWrite = new ArrayList<>();
-        int newIndex = 0;
-        int charToSearchIndex = 0;
+        int newIndex;
+        int charToSearchIndex;
         for (String string : filesToAnalysis.fileRead()) {
             StringBuilder currentString = new StringBuilder();
             for (int i = 0; i < string.length(); i++) {
@@ -100,11 +100,4 @@ public class CryptoAnalizer {
     }
 
 
-    public FileService getFilesToAnalysis() {
-        return filesToAnalysis;
-    }
-
-    public void setFilesToAnalysis(FileService filesToAnalysis) {
-        this.filesToAnalysis = filesToAnalysis;
-    }
 }

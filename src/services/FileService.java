@@ -22,8 +22,7 @@ public class FileService {
     public List<String> fileRead () {
 
         try {
-            List<String> readBuffer = Files.readAllLines(filesPath.getFileToRead());
-            return readBuffer;
+            return Files.readAllLines(filesPath.getFileToRead());
         } catch (IOException e) {
             throw new FileAccessException(e.getMessage(), e.getCause());
         }

@@ -2,9 +2,6 @@ package services;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.Scanner;
-
-import static services.Consts.ALPHABET;
 
 public class PathService {
     private Path fileToRead;
@@ -16,17 +13,11 @@ public class PathService {
     }
 
     public boolean isReadable() {
-        if(!Files.exists(fileToRead)){
-            return false;
-        }
-        return true;
+        return Files.exists(fileToRead);
     }
 
     public boolean isWritable () {
-        if (fileToWrite.startsWith("C:\\Windows")){
-            return false;
-        }
-        return true;
+        return !fileToWrite.startsWith("C:\\Windows");
     }
 
     public Path getFileToRead() {

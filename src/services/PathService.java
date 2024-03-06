@@ -1,18 +1,18 @@
-package Services;
+package services;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
+import static services.Consts.ALPHABET;
+
 public class PathService {
-    Scanner scanner;
     private Path fileToRead;
     private Path fileToWrite;
+    private int key;
 
-    public PathService(Scanner scanner) {
-        this.scanner = scanner;
-        this.fileToRead = Path.of(scanner.nextLine());
-        this.fileToWrite = Path.of(scanner.nextLine());
+    public PathService() {
+
     }
 
     public boolean isReadable() {
@@ -43,5 +43,13 @@ public class PathService {
 
     public void setFileToWrite(Path fileToWrite) {
         this.fileToWrite = fileToWrite;
+    }
+
+    public int getKey() {
+        return key;
+    }
+
+    public void setKey(int key) {
+        this.key = key;
     }
 }

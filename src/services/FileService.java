@@ -1,13 +1,19 @@
-package Services;
+package services;
 
-import Exceptions.FileAccessException;
+import exceptions.FileAccessException;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.util.List;
 
+import static services.Consts.NOT_ACCESS_CATALOG;
+
 public class FileService {
     private PathService filesPath;
+
+    public PathService getFilesPath() {
+        return filesPath;
+    }
 
     public FileService(PathService filesPath) {
         this.filesPath = filesPath;
@@ -25,10 +31,10 @@ public class FileService {
 
     public void fileWrite (List<String> dataToWrite){
         try{
-            if (filesPath.isReadable()){
+            if (filesPath.isWritable()){
                 Files.write(filesPath.getFileToWrite(), dataToWrite);
             } else {
-                System.out.println("Файл по указанному пути не удалось найти.");
+                System.out.println(NOT_ACCESS_CATALOG);
             }
         } catch (IOException e){
             throw new FileAccessException(e.getMessage(), e.getCause());

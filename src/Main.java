@@ -1,24 +1,42 @@
-import Services.CryptoAnalizer;
-import Services.FileService;
-import Services.PathService;
+import model.CryptoAnalizer;
+import services.ConsoleService;
+import services.FileService;
+import services.PathService;
 
-import java.nio.file.Path;
 import java.util.Scanner;
+
+import static services.Consts.DECRYPT;
+import static services.Consts.ENCRYPT;
 
 public class Main {
     public static void main(String[] args) {
-
-        System.out.println("Hi, user! I'm caesar descryptor. Choose you task:\n" +
-                "1 - encrypt file with key\n" +
-                "2 - decrypt file with key\n" +
-                "3 - brute force decrypt file\n" +
-                "4 - statistic analize descriptor");
-
         Scanner scanner = new Scanner(System.in);
-        PathService pathService = new PathService(scanner);
+
+        PathService pathService = new PathService();
         FileService fileService = new FileService(pathService);
+        ConsoleService consoleService = new ConsoleService(scanner, pathService);
+        //String choose = consoleService.userChoose();
+
         CryptoAnalizer cryptoAnalizer = new CryptoAnalizer(fileService);
-        cryptoAnalizer.encryptFile(5);
+        String choose = null;
+
+        while (!"exit".equals(choose)) {
+            choose = consoleService.userChoose();
+            switch (choose) {
+                case "1" -> {
+                    consoleService.inputUserData(choose, ENCRYPT);
+                    cryptoAnalizer.encryptFile();
+                }
+                case "2" -> {
+                    consoleService.inputUserData(choose, DECRYPT);
+                    cryptoAnalizer.decryptFile();
+                }
+                case "3" -> {
+                    consoleService.inputUserData(choose, DECRYPT);
+                    cryptoAnalizer.decryptBruteForce();
+                }
+            }
+        }
 
     }
 }

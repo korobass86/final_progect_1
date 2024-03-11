@@ -4,6 +4,7 @@ out/
 !**/src/test/**/out/
 .idea/
 final_project_1.iml
+*.txt
 
 
 ### Eclipse ###

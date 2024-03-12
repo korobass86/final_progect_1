@@ -1,6 +1,5 @@
 import model.CryptoAnalizer;
 import services.ConsoleService;
-import services.Consts;
 import services.FileService;
 import services.PathService;
 

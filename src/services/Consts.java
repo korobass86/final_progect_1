@@ -13,6 +13,8 @@ public class Consts {
     public static final String KEY_CRYPTO = "Введите ключ шифрования:";
 
 
-
-
+    public static final String EXIT = "exit";
+    public static final String FILE_ENCRYPTED = "Файл успешно зашифрован!";
+    public static final String FILE_DECRYPTED = "Файл успешно расшифрован!";
+    public static final String PATTERN_ENCRYPT = "*_*";
 }

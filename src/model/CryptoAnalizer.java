@@ -1,4 +1,5 @@
 package model;
+import services.Consts;
 import services.FileService;
 
 import java.util.ArrayList;
@@ -6,9 +7,10 @@ import java.util.HashMap;
 import java.util.List;
 
 import static services.Consts.ALPHABET;
+import static services.Consts.PATTERN_ENCRYPT;
 
 public class CryptoAnalizer {
-    FileService filesToAnalysis;
+    private FileService filesToAnalysis;
 
     public CryptoAnalizer(FileService filesToAnalysis) {
         this.filesToAnalysis = filesToAnalysis;
@@ -35,19 +37,19 @@ public class CryptoAnalizer {
             dataToWrite.add(currentString.toString());
         }
         filesToAnalysis.fileWrite(dataToWrite);
-        System.out.println("Файл успешно зашифрован!");
+        System.out.println(Consts.FILE_ENCRYPTED);
     }
 
     public void decryptFile () {
         filesToAnalysis.fileWrite(decriptorByKey(filesToAnalysis.getFilesPath().getKey()));
-        System.out.println("Файл успешно расшифрован!");
+        System.out.println(Consts.FILE_DECRYPTED);
     }
 
     public void decryptBruteForce () {
         int maxFrequency = 0;
         int key = 0;
         for (int i = 1; i < ALPHABET.length - 1; i++) {
-            int frequency = textAnalysis(decriptorByKey(i)).get("*_*");
+            int frequency = textAnalysis(decriptorByKey(i)).get(PATTERN_ENCRYPT);
             if (frequency > maxFrequency) {
                 maxFrequency = frequency;
                 key = i;
@@ -81,7 +83,7 @@ public class CryptoAnalizer {
 
     private HashMap<String, Integer> textAnalysis (List <String> dataToAnalysis) {
         HashMap <String, Integer> outputFrequencySymbols = new HashMap<>();
-        outputFrequencySymbols.put("*_*", 0);
+        outputFrequencySymbols.put(PATTERN_ENCRYPT, 0);
         int frequency = 0;
         for (String toAnalysis : dataToAnalysis) {
 
@@ -95,7 +97,7 @@ public class CryptoAnalizer {
             }
 
         }
-        outputFrequencySymbols.put("*_*", frequency);
+        outputFrequencySymbols.put(PATTERN_ENCRYPT, frequency);
         return outputFrequencySymbols;
     }
 

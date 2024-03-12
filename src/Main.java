@@ -1,14 +1,15 @@
 import model.CryptoAnalizer;
 import services.ConsoleService;
+import services.Consts;
 import services.FileService;
 import services.PathService;
 
 import java.util.Scanner;
 
-import static services.Consts.DECRYPT;
-import static services.Consts.ENCRYPT;
+import static services.Consts.*;
 
 public class Main {
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -20,7 +21,7 @@ public class Main {
         CryptoAnalizer cryptoAnalizer = new CryptoAnalizer(fileService);
         String choose = null;
 
-        while (!"exit".equals(choose)) {
+        while (!EXIT.equals(choose)) {
             choose = consoleService.userChoose();
             switch (choose) {
                 case "1" -> {

@@ -6,8 +6,8 @@ import java.util.Scanner;
 import static services.Consts.*;
 
 public class ConsoleService {
-    Scanner scanner;
-    PathService pathService;
+    private Scanner scanner;
+    private PathService pathService;
 
     public ConsoleService(Scanner scanner, PathService pathService) {
         this.scanner = scanner;
@@ -15,12 +15,14 @@ public class ConsoleService {
     }
 
     public String userChoose() {
-        System.out.println("Hi, user! I'm caesar descryptor. Enter the number for you task:\n" +
-                "1 - encrypt file with key\n" +
-                "2 - decrypt file with key\n" +
-                "3 - brute force decrypt file\n" +
-                "4 - statistic analize descriptor\n" +
-                "\"exit\" for finish work program");
+        System.out.println("""
+                Hi, user! I'm caesar descryptor. Enter the number for you task:" +
+                "1 - encrypt file with key"
+                "2 - decrypt file with key"
+                "3 - brute force decrypt file"
+                "4 - statistic analize descriptor"
+                "exit" for finish work program
+                """);
         return scanner.nextLine();
     }
 
